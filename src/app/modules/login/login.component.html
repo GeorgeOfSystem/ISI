@@ -1,0 +1,51 @@
+
+<div class="wrapper" >
+  <div ng-app="validationApp" ng-controller="mainController" >
+
+  <form class="login">
+    <p class="title">Log in</p>
+    <!-- Email -->
+      <mat-label > Email </mat-label>
+      <input type="text" placeholder="Email" autofocus/>
+    <!-- Email verification -->
+    <div *ngIf="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty)" class="alert alert-danger">
+      <div *ngIf="userForm.get('email').errors.required">
+          Email is required
+      </div>
+    </div>
+    <i class="fa fa-user"></i>
+    <!-- Password -->
+      <mat-label > Password </mat-label>
+      <input type="password" placeholder="Password" />
+    <!-- Password verification -->
+    <div *ngIf="userForm.get('password').invalid && (userForm.get('password').touched || userForm.get('password').dirty)" class="alert alert-danger">
+      <div *ngIf="userForm.get('password').errors.required">
+        Password is required
+      </div>
+    </div>
+    <i class="fa fa-key"></i>
+    <a href="#">Forgot your password?</a>
+    <button mat-raised-button [ngStyle]="{'background': 'rgba(7, 231, 93, 0.712)'}" (click)="onRegister()" >
+      Register
+    </button>
+  </form>
+
+  <div style="display: flex; flex-direction: row; padding: 20px;">
+  <button mat-raised-button [ngStyle]="{'background': 'rgb(219, 68, 55)'}" (click)="onloginGoogle()">
+    Google
+  </button>
+  <br >
+
+  <button mat-raised-button [ngStyle]="{'background': 'rgb(66, 103, 178)'}" (click)="onloginFacebook()" >
+    Facebook
+  </button>
+  <br >
+
+  <button mat-raised-button [ngStyle]="{'background': 'rgba(7, 231, 93, 0.712)'}" (click)="onLoginEmail()" >
+    Email
+  </button>
+
+</div>
+</div>
+</div>
+

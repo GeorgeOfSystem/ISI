@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  isSignedIn: Boolean;
   userForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder, private auth : AuthService, private router : Router) { }
@@ -18,6 +19,13 @@ export class LoginComponent implements OnInit {
       email:[ '', Validators.required ],
       password:[ '', Validators.required ]
     });
+
+    //Current User verification
+    if(localStorage.getItem('user')!= null){
+      this.isSignedIn = true;
+    } else {
+      this.isSignedIn = false;
+    }
   }
 
   onRegister() : void {
@@ -37,18 +45,18 @@ export class LoginComponent implements OnInit {
     }).catch(err => console.log('Error', err));*/
   }
   onloginGoogle() {
-    /*this.auth.onLoginGoogle().then(res => {
+    this.auth.onLoginGoogle().then(res => {
       console.log('userRes', res);
-      this.auth.userLogged=res.user;
+      //this.auth.userLogged=res.user;
       this.redirect();
-    }).catch(err => console.log('Error', err));*/
+    }).catch(err => console.log('Error', err));
   }
   onloginFacebook() {
-    /*this.auth.onLoginFacebook().then(res => {
+    this.auth.onLoginFacebook().then(res => {
       console.log('userRes', res);
-      this.auth.userLogged=res.user;
+      //this.auth.userLogged=res.user;
       this.redirect();
-    }).catch(err => console.log('Error', err));*/
+    }).catch(err => console.log('Error', err));
   }
 
   redirect() : void {

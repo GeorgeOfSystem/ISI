@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import firebase from "firebase/app";
 import { AngularFireAuth } from '@angular/fire/auth'
 
 @Injectable({
@@ -23,6 +24,23 @@ export class AuthService {
       this.isLoggedIn = true;
       localStorage.setItem('user',JSON.stringify(res.user))
     } );
+  }
+
+  onLoginGoogle() {
+    return this.firebaseAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .then((result) => {
+        console.log('You have been successfully logged in!')
+    }).catch((error) => {
+        console.log(error)
+    });
+  }
+
+  onLoginFacebook() : any {
+    return this.firebaseAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then((result) => {
+      console.log('You have been successfully logged in!')
+  }).catch((error) => {
+      console.log(error)
+  });
   }
 
   logout(){

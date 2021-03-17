@@ -23,6 +23,7 @@ export class ClothesComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges(): void{
     this.unSusbcribe();
+    this.clothes = [];
     this.getClothes();
   }
 

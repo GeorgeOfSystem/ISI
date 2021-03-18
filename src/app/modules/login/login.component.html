@@ -1,12 +1,12 @@
 
-<div class="wrapper" >
+<div class="wrapper" [formGroup]="userForm" >
   <div ng-app="validationApp" ng-controller="mainController" >
 
   <form class="login">
     <p class="title">Log in</p>
     <!-- Email -->
       <mat-label > Email </mat-label>
-      <input type="text" placeholder="Email" autofocus/>
+      <input type="text" placeholder="Email" autofocus formControlName="email" />
     <!-- Email verification -->
     <div *ngIf="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty)" class="alert alert-danger">
       <div *ngIf="userForm.get('email').errors.required">
@@ -16,7 +16,7 @@
     <i class="fa fa-user"></i>
     <!-- Password -->
       <mat-label > Password </mat-label>
-      <input type="password" placeholder="Password" />
+      <input type="password" placeholder="Password" formControlName="password" />
     <!-- Password verification -->
     <div *ngIf="userForm.get('password').invalid && (userForm.get('password').touched || userForm.get('password').dirty)" class="alert alert-danger">
       <div *ngIf="userForm.get('password').errors.required">

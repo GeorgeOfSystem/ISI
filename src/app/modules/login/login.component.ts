@@ -21,29 +21,40 @@ export class LoginComponent implements OnInit {
     });
 
     //Current User verification
-    if(localStorage.getItem('user')!= null){
+    /*if(localStorage.getItem('user')!= null){
       this.isSignedIn = true;
     } else {
       this.isSignedIn = false;
-    }
+    }*/
   }
 
-  onRegister() : void {
+  async onRegister() {
     console.log('New user', this.userForm.value)
+    await this.auth.signUp(this.userForm.value.email,this.userForm.value.password);
+    if(this.auth.isLoggedIn){
+      //this.isSignedIn = true;
+      this.redirect();
+    }
     /*this.auth.onRegister( this.userForm.value.email,this.userForm.value.password).then(res => {
       console.log('userRes', res);
       this.onLoginEmail();
     }).catch(err => console.log('Error', err));*/
   }
 
-  onLoginEmail(): void {
+  async onLoginEmail() {
     console.log('user', this.userForm.value)
+    await this.auth.signIn(this.userForm.value.email,this.userForm.value.password);
+    if(this.auth.isLoggedIn){
+      //this.isSignedIn = true;
+      this.redirect();
+    }
     /*this.auth.onLoginEmail( this.userForm.value.email,this.userForm.value.password).then(res => {
       console.log('userRes', res);
       this.auth.userLogged=res.user;
       this.redirect();
     }).catch(err => console.log('Error', err));*/
   }
+  
   onloginGoogle() {
     this.auth.onLoginGoogle().then(res => {
       console.log('userRes', res);

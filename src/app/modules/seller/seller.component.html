@@ -1,40 +1,36 @@
-<mat-card class="example-card">
-	<mat-card-header justify-content:center align-items:center>
-		<mat-card-title>Formulario de añadir ropa</mat-card-title>
-	</mat-card-header>
-	<mat-card-content>
-		<form [formGroup]="formularioForm">
-			<div class="row">
-				<div class="col">
-					<label for="exampleFormControlInput1">Nombre</label>
-					<input type="text" formControlName="nombre" class="form-control" placeholder="Nombre">
-    </div>
-					<div class="col">
-						<label for="exampleFormControlInput1">Tipo</label>
-						<select class="form-control">
-        <option>Hoddie</option>
-        <option>Jean</option>
-        <option>Polera</option>
-        <option>Otro</option>
-</select>
-					</div>
-				</div>
-				&nbsp;
-				&nbsp;
-				<div class="form-group">
-					<label for="exampleFormControlInput1">Talla</label>
-					<input type="email" class="form-control" formControlName="talla" id="exampleFormControlInput1" placeholder="M">
-  </div>
-					&nbsp;
-					&nbsp;
-					<div class="form-group">
-						<label for="exampleFormControlTextarea1">Imagen</label>
-						<textarea class="form-control" formControlName="image_Url" id="exampleFormControlTextarea1" rows="3"></textarea>
-					</div>
-					&nbsp;
-		</form>
-	</mat-card-content>
-	<mat-card-actions style="text-align:center">
-		<button mat-button (click)="onCreate()" >Subir para exponer</button>
-	</mat-card-actions>
-</mat-card>
+
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <title>Agency - Start Bootstrap Theme</title>
+      <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+      <!-- Font Awesome icons (free version)-->
+      <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+      <!-- Google fonts-->
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body id="page-top">
+      <!-- Navigation-->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+          <div class="container">
+              <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                  <img style="height: 80px; width:80px; float: left;" src="assets/img/logoisi.png" alt="" href="#page-top"/></a>
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                  Menú
+                  <i class="fas fa-bars ml-1"></i>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="homeSeller"><b>Ofrecer</b></a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="offerSeller"><b>Productos</b></a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" ><b>logout</b></a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+<router-outlet></router-outlet>

@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from './shared/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ClothesService } from './shared/services/clothes.service';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 const routes: Routes = [
   { path: "", redirectTo: "", pathMatch: "full" },
@@ -38,7 +40,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    //    AngularFireDatabaseModule 
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   providers: [
     AuthService,

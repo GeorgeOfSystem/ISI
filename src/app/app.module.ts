@@ -25,7 +25,12 @@ const routes: Routes = [
     path: "seller",
     loadChildren: () =>
       import("./modules/seller/seller.module").then(m => m.SellerModule)
-  }
+  },/*
+  {
+    path: "profile",
+    loadChildren: () =>
+      import("./modules/profile/profile.module").then(m => m.ProfileModule)
+  }*/
 ];
 
 @NgModule({

@@ -30,7 +30,7 @@ export class ClothesComponent implements OnInit, OnDestroy, OnChanges {
   
   ngOnDestroy(): void{
     this.unSusbcribe();
-    this.home.clothes=false;
+    this.home.pageType = 'clothes';
   }
 
   getClothes(): void{

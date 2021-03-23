@@ -18,7 +18,8 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" >
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                    <img style="height: 80px; width:80px; float: left;" src="assets/img/logoisi.png" alt="" href="#page-top"/></a>
+                    <img style="height: 80px; width:80px; float: left;" src="assets/img/logoisi.png" alt="" href="#page-top"/>
+                </a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menú
                     <i class="fas fa-bars ml-1"></i>
@@ -29,16 +30,22 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="clotheSection('jeans')"><b>Jeans</b></a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="clotheSection('poleras')"><b>Poleras</b></a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger" ><b>Buscar</b></a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="loginSection()"><b>Login</b></a></li>
+                        <a *ngIf="!isSignedIn">
+                            <li class="nav-item" ><a class="nav-link js-scroll-trigger" (click)="loginSection()"><b>Login</b></a></li>
+                        </a>
+                        <a *ngIf="isSignedIn"> 
+                            <button mat-mini-fab style="background-image: url({{userLogged.photoURL}}); background-repeat: no-repeat; background-size: cover; background-position: center; border-radius: 50%;" (click)="profileSection()"></button>
+                            <li class="nav-item" ><a class="nav-link js-scroll-trigger" (click)="logout()"><b>logout</b></a></li>
+                        </a>
                     </ul>
                 </div>
             </div>
         </nav>
+        <div [ngSwitch]="pageType">
+            <welcome *ngSwitchCase="'welcome'" ></welcome>
+            <app-clothes *ngSwitchCase="'clothes'" clotheType={{clotheTypeNavbar}}></app-clothes>
+            <app-profile *ngSwitchCase="'profile'"></app-profile>
+        </div>
     </body>
 </html>
-<div *ngIf="!clothes">
-    <welcome></welcome>
-</div>
-<div *ngIf="clothes">
-    <app-clothes clotheType={{clotheTypeNavbar}}></app-clothes>
-</div>
+

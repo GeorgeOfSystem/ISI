@@ -14,7 +14,8 @@ export class AuthService {
     await this.firebaseAuth.signInWithEmailAndPassword(email,password).
     then( res=>{
       this.isLoggedIn = true;
-      localStorage.setItem('user',JSON.stringify(res.user))
+      localStorage.setItem('user',JSON.stringify(res.user));
+      console.log('You have been successfully logged in!');
     } )
   }
 
@@ -22,22 +23,28 @@ export class AuthService {
     await this.firebaseAuth.createUserWithEmailAndPassword(email,password).
     then( res=>{
       this.isLoggedIn = true;
-      localStorage.setItem('user',JSON.stringify(res.user))
+      localStorage.setItem('user',JSON.stringify(res.user));
+      console.log('You have been successfully logged in!');
     } );
   }
 
   onLoginGoogle() {
     return this.firebaseAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then((result) => {
-        console.log('You have been successfully logged in!')
+        this.isLoggedIn = true;
+        localStorage.setItem('user',JSON.stringify(result.user));
+        console.log('You have been successfully logged in!');
+        
     }).catch((error) => {
         console.log(error)
     });
   }
 
-  onLoginFacebook() : any {
+  onLoginFacebook() {
     return this.firebaseAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then((result) => {
-      console.log('You have been successfully logged in!')
+      this.isLoggedIn = true;
+      localStorage.setItem('user',JSON.stringify(result.user));
+      console.log('You have been successfully logged in!');
   }).catch((error) => {
       console.log(error)
   });
@@ -45,7 +52,7 @@ export class AuthService {
 
   logout(){
     this.firebaseAuth.signOut();
-    localStorage.removeItem('user')
+    localStorage.removeItem('user');
   }
 
 

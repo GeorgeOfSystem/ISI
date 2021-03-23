@@ -35,10 +35,6 @@ export class LoginComponent implements OnInit {
       //this.isSignedIn = true;
       this.redirect();
     }
-    /*this.auth.onRegister( this.userForm.value.email,this.userForm.value.password).then(res => {
-      console.log('userRes', res);
-      this.onLoginEmail();
-    }).catch(err => console.log('Error', err));*/
   }
 
   async onLoginEmail() {
@@ -48,29 +44,21 @@ export class LoginComponent implements OnInit {
       //this.isSignedIn = true;
       this.redirect();
     }
-    /*this.auth.onLoginEmail( this.userForm.value.email,this.userForm.value.password).then(res => {
-      console.log('userRes', res);
-      this.auth.userLogged=res.user;
-      this.redirect();
-    }).catch(err => console.log('Error', err));*/
   }
   
   onloginGoogle() {
     this.auth.onLoginGoogle().then(res => {
-      console.log('userRes', res);
-      //this.auth.userLogged=res.user;
       this.redirect();
     }).catch(err => console.log('Error', err));
   }
   onloginFacebook() {
     this.auth.onLoginFacebook().then(res => {
-      console.log('userRes', res);
-      //this.auth.userLogged=res.user;
       this.redirect();
     }).catch(err => console.log('Error', err));
   }
 
   redirect() : void {
-    this.router.navigate(['/seller']);
+    console.log(localStorage.getItem('user'));
+    this.router.navigate(['/home']);
   }
 }

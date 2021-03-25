@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
   }
 
   redirect() : void {
-    console.log(localStorage.getItem('user'));
-    this.router.navigate(['/home']);
+    this.router.navigate(['/seller']);
   }
 }

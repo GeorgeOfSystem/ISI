@@ -1,6 +1,4 @@
 <div class="wrapper" >
-
-
   <mat-card class="example-card" [ngStyle]="{'background': 'rgba(240, 255, 255'}">
     <mat-card-header justify-content:center align-items:center>
       <mat-card-title>Formulario de añadir ropa</mat-card-title>
@@ -11,35 +9,31 @@
           <div class="col">
             <label for="exampleFormControlInput1">Nombre</label>
             <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre">
-      </div>
-            <div class="col">
-              <label for="exampleFormControlInput1">Tipo</label>
-              <select class="form-control">
-          <option>Hoddie</option>
-          <option>Jean</option>
-          <option>Polera</option>
-          <option>Otro</option>
-  </select>
-            </div>
           </div>
-          &nbsp;
-          &nbsp;
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Talla</label>
-            <input type="email" class="form-control" formControlName="talla" id="exampleFormControlInput1" placeholder="M">
-    </div>
-            &nbsp;
-            &nbsp;
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Imagen</label>
-              <textarea class="form-control" formControlName="image_Url" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            &nbsp;
+          <div class="col">
+            <label for="exampleFormControlInput1">Tipo</label>
+            <select class="form-control" formControlName="clothe">
+              <option *ngFor="let clothe of clothes" [ngValue]="clothe">{{clothe}}</option>
+            </select>
+          </div>
+        </div>
+        &nbsp;
+        &nbsp;
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Talla</label>
+          <input type="email" class="form-control" formControlName="talla" id="exampleFormControlInput1" placeholder="M">
+        </div>
+        &nbsp;
+        &nbsp;
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Imagen</label>
+          <textarea class="form-control" formControlName="image_Url" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        &nbsp;
       </form>
     </mat-card-content>
-
     <mat-card-actions style="text-align:center" [ngStyle]="{'background': 'rgba(7, 231, 93, 0.712)'}">
       <button mat-button (click)="onCreate()" >Subir para exponer</button>
     </mat-card-actions>
   </mat-card>
-  </div>
+</div>

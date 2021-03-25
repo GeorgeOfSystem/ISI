@@ -9,9 +9,9 @@ import { ClothesService } from 'src/app/shared/services/clothes.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  clotheTypeNavbar: string;
   isSignedIn: Boolean;
   userLogged;
-  clotheTypeNavbar: string;
   
   pageType = "welcome";
 
@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
     if(localStorage.getItem('user')!= null){
       this.isSignedIn = true;
       this.userLogged = JSON.parse(localStorage.getItem('user'));
-      console.log("url",this.userLogged);
     } else {
       this.isSignedIn = false;
     }
@@ -31,19 +30,6 @@ export class HomeComponent implements OnInit {
     this.clotheTypeNavbar = type;
     this.pageType = 'clothes';
     console.log('tipo',type);
-  }
-
-  loginSection() {
-    this.router.navigate(['login']);
-  }
-
-  logout(){
-    this.auth.logout();
-    window.location.reload();
-  }
-
-  profileSection(){
-    this.pageType='profile';
   }
 
 }

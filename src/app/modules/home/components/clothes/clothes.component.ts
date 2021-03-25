@@ -12,6 +12,7 @@ import { HomeComponent } from '../../home.component';
 export class ClothesComponent implements OnInit, OnDestroy, OnChanges {
   clothes=[];
   clothesSubs: Subscription;
+  detailClothe;
 
   @Input()
   clotheType : string;
@@ -30,7 +31,7 @@ export class ClothesComponent implements OnInit, OnDestroy, OnChanges {
   
   ngOnDestroy(): void{
     this.unSusbcribe();
-    this.home.pageType = 'clothes';
+    this.home.pageType = 'welcome';
   }
 
   getClothes(): void{
@@ -44,5 +45,10 @@ export class ClothesComponent implements OnInit, OnDestroy, OnChanges {
     this.clothesSubs ? this.clothesSubs.unsubscribe():'';
   }
 
+  DetailSection(clothe){
+    console.log("clothes",clothe);
+    this.detailClothe = clothe;
+    this.router.navigate(['/detail']);
+  }
 
 }

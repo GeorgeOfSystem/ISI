@@ -36,9 +36,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
     console.log("User", this.userLogged);
     this.formSubs = this.service.add({ ...this.formularioForm.value})
       .subscribe(
-        res => {console.log('Resp:', res)},
+        res => {
+          console.log('Resp:', res); 
+          //this.router.navigate(['../offerSeller']);
+        },
         err => { console.log('Error de servidor', err) }
       );
+    
   }
   
   ngOnInit() {

@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   formularioForm: FormGroup;
   formSubs: Subscription;
   userLogged;
-  clothes=['hoddies','jeans','poleras','Otros'];
+  clothes=['hoodies','jeans','poleras','Otros'];
   selectedFiles: FileList;
   currentFileUpload: Upload;
   percentage: number;

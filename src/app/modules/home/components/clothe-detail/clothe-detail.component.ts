@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clothe-detail.component.scss']
 })
 export class ClotheDetailComponent implements OnInit {
+  isSignedIn: Boolean;
+  userLogged;
+
+  pageType = "welcome";
+
 
   constructor() { }
 
   ngOnInit() {
   }
-
+  clotheSection(type: string){
+    this.pageType = 'clothes';
+    console.log('tipo',type);
+  }
 }

@@ -14,13 +14,15 @@ export class UploadService {
   constructor(private st: AngularFireStorage, private db: AngularFireDatabase) { }
 
   uploadFileToStorage(upload: Upload): Observable<number>{
-    const filePath = `${this.basePath}/${upload.file.name}`;
+    const user = JSON.parse(localStorage.getItem('user'));
+    const filePath = `${this.basePath}/${user.email}/${upload.file.name}`;
     const storageRef = this.st.ref(filePath);
     const uploadTask = this.st.upload(filePath, upload.file);
 
     uploadTask.snapshotChanges().pipe(
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
+          localStorage.setItem('imageURL',downloadURL)
           upload.url = downloadURL;
           upload.name = upload.file.name;
           this.saveFileData(upload);

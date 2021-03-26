@@ -27,13 +27,31 @@
         &nbsp;
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Imagen</label>
-          <textarea class="form-control" formControlName="image_Url" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <label>
+            <input
+              type="file"
+              class="text-nowrap text-truncate"
+              (change)="selectFile($event)"
+            />
+          </label>
         </div>
         &nbsp;
       </form>
     </mat-card-content>
     <mat-card-actions style="text-align:center" [ngStyle]="{'background': 'rgba(7, 231, 93, 0.712)'}">
-      <button mat-button (click)="onCreate()" >Subir para exponer</button>
+      <button mat-button (click)="onCreate()" [disabled]="!selectedFiles">Subir para exponer</button>
     </mat-card-actions>
+    <div *ngIf="currentFileUpload" class="progress mt-2">
+      <div
+        class="progress-bar progress-bar-info"
+        role="progressbar"
+        attr.aria-valuenow="{{ percentage }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: percentage + '%' }"
+      >
+        {{ percentage }}%
+      </div>
+    </div>
   </mat-card>
 </div>
